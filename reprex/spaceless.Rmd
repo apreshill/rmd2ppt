@@ -1,0 +1,30 @@
+---
+title: "Spaceless"
+author: "Alison Hill"
+date: "6/3/2021"
+output: 
+  slidy_presentation: default
+  powerpoint_presentation: default
+  beamer_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Img + spaceless text
+
+Some opening remarks with no space
+![look a puffin](../images/Puffin_Mrkoww.jpg)
+
+With no space, there is no puffin :(
+
+## Img + spaced out text
+
+Some opening remarks with a space
+
+![look a puffin](../images/Puffin_Mrkoww.jpg)
+
+With a space, we have puffin (but of course, on its own slide)
+

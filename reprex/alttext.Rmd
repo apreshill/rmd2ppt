@@ -1,0 +1,29 @@
+---
+title: "Alt text"
+author: "Alison Hill"
+date: "6/3/2021"
+output: 
+  powerpoint_presentation: default
+  slidy_presentation: default
+  beamer_presentation: default
+---
+
+## Alt text does not work with urls
+
+```
+![look a puffin](https://upload.wikimedia.org/wikipedia/commons/9/94/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+```
+
+![look a puffin](https://upload.wikimedia.org/wikipedia/commons/9/94/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+
+---
+
+## Alt text does not work with local images either
+
+```
+![look a puffin](../images/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+```
+
+![look a puffin](../images/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+
+

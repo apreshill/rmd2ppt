@@ -1,31 +1,166 @@
 ---
 title: "Powerpoint penguins"
+date: 2021-03-29
 author: "Alison Hill"
 output: 
   powerpoint_presentation:
+    keep_md: true
     toc: true
-    slide_level: 2 # default, determines slide split
-    #reference_doc: alison-template.pptx
+    slide_level: 1 # default, determines slide split
+    reference_doc: alison-template.pptx
     #df_print: kable
-monofont: DM Mono # doesn't work
+  officedown::rpptx_document: 
+    reference_doc: alison-template.pptx
+monofont: 'Source Code Pro' # doesn't work
 ---
 
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(palmerpenguins)
 library(ymlthis)
-knitr::opts_chunk$set(fig.path="figs/")
+knitr::opts_chunk$set(fig.path="figs/", fig.retina = 3)
 ```
+
+hello
+
+---
+
+# hi
+
+---
+
+
+Just some normal text on this slide please
+
+---
+
+if slide level is 1, I cannot use section slides
+
+---
+
+# one
+
+## two
+
+---
+
+### three
+
+#### four
+
+---
+
+# am I header
+
+---
+
+# test
+
+l1 above me, but I'm on a new slide
+
+---
+
+# test
+
+## l1 above me, but I'm on a new slide
+
+---
+
+## test
+
+---
+
+l2 above me
+
+---
+
+## l2
+
+### l3
+
+---
+
+## Alt text does not work with urls
+
+---
+
+```
+![look a puffin](https://upload.wikimedia.org/wikipedia/commons/9/94/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+```
+
+![look a puffin](https://upload.wikimedia.org/wikipedia/commons/9/94/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+
+---
+
+## Alt text does not work with local images either
+
+```
+![look a puffin](images/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+```
+
+![look a puffin](images/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+
+---
+
+## Resizing images with `out.width` does not work
+
+```{r, echo=TRUE, out.width="1%"}
+plot(cars)
+```
+
+https://github.com/jgm/pandoc/issues/4586
 
 ------------------------------------------------------------------------
 
-```{r}
+# Where does the code go?
+
+```{r echo=TRUE}
 head(penguins, 4)
 ```
 
 ------------------------------------------------------------------------
 
-## Stacked histogram (wrong)
+## Where does the h2 go?
+
+```{r}
+head(penguins, 4)
+```
+
+
+
+------------------------------------------------------------------------
+
+# Where does the teeny tiny plot go?
+
+```{r, cars, echo=TRUE, out.width="1%"}
+plot(cars)
+```
+
+------------------------------------------------------------------------
+
+# But this works 
+
+- Adelie
+- Chinstrap `r 2 + 2`
+- Gentoo
+
+```{r, math}
+2 + 2
+```
+
+
+------------------------------------------------------------------------
+
+## I'm unlisted {.unlisted .unnumbered}
+
+# Hello- I'd like to not be on a new slide
+
+<https://github.com/rstudio/rmarkdown/issues/1625>
+
+
+------------------------------------------------------------------------
+
+## Code forces plot on new slide ...
 
 ```{r stack-hist, warning=FALSE, message=FALSE}
 # Histogram example: flipper length by species
@@ -37,9 +172,10 @@ ggplot(data = penguins,
   scale_fill_manual(values = c("darkorange","darkorchid","cyan4"))
 ```
 
+
 ------------------------------------------------------------------------
 
-## Dodged histogram (better)
+# this works
 
 ```{r dodge-hist, echo=FALSE, warning=FALSE, message=FALSE}
 # Histogram example: flipper length by species
@@ -68,7 +204,7 @@ flipper_hist <- ggplot(data = penguins, aes(x = flipper_length_mm)) +
 flipper_hist
 ```
 
----
+------------------------------------------------------------------------
 
 ## Testing
 
@@ -80,7 +216,7 @@ ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
   scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
 ```
 
----
+------------------------------------------------------------------------
 
 ## Surprised that warnings/messages push plots to next slide?
 
@@ -150,6 +286,12 @@ Fair game:
 
 -   lists (like this one!)
 
+You can include **Knit** markdown as *normal*[^1].[^2]
+
+[^1]: A footnote
+
+[^2]: does this work?
+
 ------------------------------------------------------------------------
 
 PowerPoint
@@ -173,10 +315,9 @@ PowerPoint
 
 1.  Code looks like crap, and I cannot do anything about it?
 
-1.  The reference template looks like crap?
+2.  The reference template looks like crap?
 
-1.  My plots look like crap? Why is the resolution so poor?
-
+3.  My plots look like crap? Why is the resolution so poor?
 
 ------------------------------------------------------------------------
 
@@ -186,10 +327,8 @@ wow that works- very neat `r emo::ji("tada")`
 
 ooh and emojis work too `r emo::ji("trophy")`
 
-::: notes
-
+::: {.notes}
 you shouldn't be reading this right now
-
 :::
 
 ------------------------------------------------------------------------
@@ -204,14 +343,11 @@ left
 :::
 
 ::: {.column width="60%"}
-right
-somehow, these columns end up on a different slide?
-oh right, because I tried to use words above, see: "This syntax is insane"
+right somehow, these columns end up on a different slide? oh right, because I tried to use words above, see: "This syntax is insane"
 :::
 :::
 
-
-----------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ## So two column won't work, huh?
 
@@ -219,7 +355,7 @@ Cool cool.
 
 I just copy pasted from here: <https://pandoc.org/MANUAL.html#columns>
 
-Note: this ended up working (I think) after going into visual editor mode then back. 
+Note: this ended up working (I think) after going into visual editor mode then back.
 
 ------------------------------------------------------------------------
 
@@ -245,7 +381,6 @@ Left column:
 
 ## why???
 
-
 ::: {.columns}
 ::: {.column width="50%"}
 Left column:
@@ -256,18 +391,15 @@ Left column:
 :::
 
 ::: {.column width="50%"}
-
-```{r fig.cap="Yes caption!", echo=FALSE}
+```{r fig.cap="Yes caption!", echo=FALSE, warning=FALSE, message=FALSE}
 flipper_hist
 ```
-
 :::
 :::
 
 ------------------------------------------------------------------------
 
 ## Reading in the figure manually
-
 
 ::: {.columns}
 ::: {.column width="10%"}
@@ -280,11 +412,29 @@ Left column at `width='10%'`?:
 :::
 
 ::: {.column width="90%"}
-
 ![](figs/flipper-hist-1.png)
+:::
+:::
 
-:::
-:::
+------------------------------------------------------------------------
+
+## Testing officedown
+
+```{r layout='Two Content', width=2, ph=officer::ph_location_left(), warning=FALSE, message=FALSE, echo=FALSE}
+rvg::dml(ggobj = flipper_hist)
+```
+
+```{r ref.label='dodge-hist', width=2, layout='Two Content', ph=officer::ph_location_right(), echo=FALSE, warning=FALSE, message=FALSE, }
+```
+
+## ggplot in right column
+
+-   Some
+-   Bullets
+
+```{r layout='Two Content', width=2, ph=officer::ph_location_right(), warning=FALSE, message=FALSE, echo=FALSE}
+rvg::dml(ggobj = flipper_hist)
+```
 
 ------------------------------------------------------------------------
 
@@ -328,87 +478,4 @@ Why? Don't repeat yourself!
 
     -   Chunk 1: `{r plot-first, echo = FALSE}`
     -   Chunk 2: `{r ref.label = 'plot-first', fig.show = 'hide'}`
-
-------------------------------------------------------------------------
-
-## More observations
-
--   The default 4:3 looks super-dated, and hard to know that you must change the reference template
-
-- turning on visual editor made all my `---` slide separators turn into full lines? That is not pleasant. Three is "just enough" visually for an HR?
-
-- BUT it changed all my insane div syntax to `:::`- much better!
-
-- It took me awhile to figure out how slide separators and heading levels started new slides
-
----
-
-## Slide templates
-
-Making the reference slide template well is kind of a game changer- sharing some good templates might be very welcome.
-
-Setting them up the right way is a huge gotcha.
-
-Most powerpoint users are given a template- only advanced PPT users make their own slide templates, or have others make a **real** template for them. 
-
-We'll need to teach "PPT for R Markdown users" 
-
-
----
-
-
-Also, there are lots of slide layouts in there, but I have no idea how to use them?
-
-Pandoc says:
-
-The specific requirement is that the template should begin with the following first four layouts:
-
-+ Title Slide
-+ Title and Content
-+ Section Header
-+ Two Content
-
-From Pandoc:
-
-> You can also modify the default reference.pptx: first run pandoc -o custom-reference.pptx --print-default-data-file reference.pptx, and then modify custom-reference.pptx in MS PowerPoint (pandoc will use the first four layout slides, as mentioned above).
-
-
----
-
-## Pain points
-
-+ no model reference slide template provided, and no easy way to make one that fits pandoc's weird needs (can we wrap the pandoc function?)
-+ no R output in two column slides- huge bummer.
-+ no ANYTHING else on two columns slides- just the slide title and the columns.
-+ in two column slides, `width` appears to do nothing?
-
----
-
-## Pain points (continued)
-
-+ no way to control code overflow. With HTML you can work with CSS, but it feels impossible this way other than manually in PPT?
-+ `monofont` in YAML is namechecked by pandoc, but doesn't work? https://rmarkdown.rstudio.com/docs/reference/powerpoint_presentation.html
-+ my template has a footer with date, slide number, etc.- where is that?
-+ no background images, or even inverse slides
-
----
-
-## Seeing my layout options
-
-This is handy, `officer::layout_summary()`
-
-```{r echo=FALSE}
-library(officer)
-my_template <- read_pptx("alison-template.pptx") 
-layout_summary(my_template) 
-```
-
----
-
-## Try kable instead
-
-```{r echo=FALSE}
-layout_summary(my_template) %>% 
-  knitr::kable()
-```
 

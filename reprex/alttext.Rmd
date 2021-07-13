@@ -11,19 +11,18 @@ output:
 ## Alt text does not work with urls
 
 ```
-![look a puffin](https://upload.wikimedia.org/wikipedia/commons/9/94/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+![look a puffin](https://upload.wikimedia.org/wikipedia/commons/9/94/Puffin_Mrkoww.jpg "Is this alt text?: A proper puffin")
 ```
 
-![look a puffin](https://upload.wikimedia.org/wikipedia/commons/9/94/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+![look a puffin](https://upload.wikimedia.org/wikipedia/commons/9/94/Puffin_Mrkoww.jpg "Is this alt text?: A proper puffin")
 
 ---
 
 ## Alt text does not work with local images either
 
 ```
-![look a puffin](../images/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
+![look a puffin](../images/Puffin_Mrkoww.jpg "Is this alt text?: A proper puffin")
 ```
 
-![look a puffin](../images/Puffin_Mrkoww.jpg "Title: A proper puffin"){fig.alt="alt text: it is a very cute puffin."}
-
+![look a puffin](../images/Puffin_Mrkoww.jpg "Is this alt text?: A proper puffin")
 
